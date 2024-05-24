@@ -23,7 +23,7 @@ const Signup = () => {
             console.log(response.data)
             if(response.data){
                 toast.success("Signup Successful")
-                navigate('/course')
+                navigate('/')
             }
             localStorage.setItem("Users",JSON.stringify(response.data))
         })

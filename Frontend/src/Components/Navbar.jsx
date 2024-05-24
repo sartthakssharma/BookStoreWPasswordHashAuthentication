@@ -6,9 +6,8 @@ import Logout from "./Logout"
 
 
 const Navbar = () => {
-
     const [authUser,setAuthUser] = useAuth()
-    
+    console.log(authUser)
     const [theme,setTheme] = useState(localStorage.getItem("theme")?localStorage.getItem("theme"):"light")
     const element = document.documentElement
     useEffect(()=>{
@@ -96,10 +95,16 @@ const Navbar = () => {
   
 </label>
 </div>
-    {   authUser ? (<Logout/>) : ( <div>
+    {   authUser ? 
+    (<div>
+        <Logout/>
+        <p className={"m-2  bg-green-500 text-white text-center rounded-md cursor-pointer"}>{authUser.user.fullName}</p>
+    </div>) 
+    : 
+    (<div>
         <a className="bg-black text-white px-3 py-2 rounded-md hover:bg-slate-800 duration-300 cursor-pointer" onClick={()=>document.getElementById('my_modal_3').showModal()}>Login</a>
         <Login/>
-        </div>)
+    </div>)
     }  
 </div>
 </div>
